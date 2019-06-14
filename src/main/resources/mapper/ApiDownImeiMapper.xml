@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jdktomcat.mybatis.example.mapper.ApiDownImeiMapper">
+	<resultMap id="downloadImeiInfo" type="com.jdktomcat.mybatis.example.entry.ApiDownImeiRecord">
+        <result column="imei" property="imei"/>
+        <result column="down_begin" property="downBegin"/>
+        <result column="platform" property="platform"/>
+        <result column="channel" property="channel"/>
+        <result column="ad_id" property="adId"/>
+        <result column="ad_name" property="adName"/>
+        <result column="plan_id" property="planId"/>
+        <result column="plan_name" property="planName"/>
+        <result column="app_package" property="appPackage"/>
+    </resultMap>
+
+	<!-- 查询下载IMEI报表 -->
+	<select id="queryPage" resultMap="downloadImeiInfo">
+		select * from t_api_download_imei limit #{startIndex}, #{pageSize}
+	</select>
+	
+</mapper>

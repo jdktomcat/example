@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+    <plugins>
+        <plugin interceptor="com.jdktomcat.mybatis.example.plugin.PageQueryPlugin">
+            <property name="name" value="1234"/>
+        </plugin>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://10.101.25.141:3306/demo"/>
+                <property name="username" value="root"/>
+                <property name="password" value="tang37"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapper/BlogMapper.xml"/>
+        <mapper resource="mapper/ApiDownImeiMapper.xml"/>
+    </mappers>
+</configuration>
